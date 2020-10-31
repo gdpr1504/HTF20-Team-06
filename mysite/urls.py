@@ -1,32 +1,33 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from mysite.core import views
 
-admin.site.site_header = 'GPMS Administration'
-admin.site.site_title = 'GPMS Admin'
-admin.site.index_title = 'GPMS Administration'
+admin.site.site_header = 'Anti Ragging Administration'
+admin.site.site_title = 'Anti Ragging Admin'
+admin.site.index_title = 'Anti Ragging Administration'
 
 
 urlpatterns = [
     path('', views.home, name='home'),
+   # path('login',views.admin,name='login'),
     path('home1',views.home1,name='home1'),
-    path('signup/', views.signup, name='signup'),
- 	path('help/', views.help, name='help'),
-    path('secret/', views.secret_page, name='secret'),
-    path('secret2/', views.SecretPage.as_view(), name='secret2'),
-    path('secret3/', views.SecretPage.as_view(), name='secret3'),
+    path('home3',views.home3,name='home3'),
+    path('home4',views.home4,name='home4'),
+    path('complaintregistered',views.complaintregistered,name='complaintregistered'),
+    path('students',views.allstudents,name='student'),
+    path('addstudent',views.students,name='addstudent'),
+    path('filecomplaint',views.filecomplaint,name='filecomplaint'),
+    path('studentprofile',views.studentprofile,name='studentprofile'),
+    #path('signup/', views.signup, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('loggedin',views.login_successful,name='login_successful'),
-    path('outpasses/',views.outpasses,name="outpasses"),
-    path('outpasses/home2',views.home2,name='home2'),
-    path('homepage',views.homepage,name='homepage'),
-    path('outpasses/outpasses123/',views.set,name='outpasses/outpasses123'),
-    path('outpasses/outpasses123/loggedin',views.login_successful,name="outpasses/outpasses123/loggedin"),
-    path('outpasses/loggedin',views.login_successful,name="outpasses/loggedin"),
-    path('outpasses/outpasses123/home2',views.home2,name="outpasses/outpasses123/home2"),
-    path('outpasses/outpasses',views.outpasses,name="outpasses/outpasses"),
-    path('outpasses/outpasses123/outpasses',views.outpasses,name="outpasses/outpasses123/outpasses"),
-    path('outpasses/outpasses123/outpasses123',views.set,name="outpasses/outpasses123/outpasses123")
-]
+    path('complaintdetails',views.complaintdetails,name='complaintdetails')
+    
+
+]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

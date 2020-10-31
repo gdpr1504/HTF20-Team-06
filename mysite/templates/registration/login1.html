@@ -7,7 +7,7 @@
       <meta name="author" content="GDPR">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>{% block title %}GPMS{% endblock %}</title>
+    <title>{% block title %}Anti Ragging{% endblock %}</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -40,48 +40,58 @@ td > a {
   display: block;
 }
 </style>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="#" style="padding-left:10px;padding-right: 750px;">GPMS</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"style="color:white;padding-right: 15px">Hello {% if values %}{{values.ausername}}{% endif %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}" style="color:white">LogOut</a>
-                    </li>
-                </ul>
-              </div>
-          </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+  <div class="container">
+      <a class="navbar-brand" href="#" style="padding-right: 800px">Anti Ragging</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {%if value%}
+                      {{value}}
+                      {%else%}
+                      Admin
+                      {% endif %}
+
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="students">Students</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="addstudent">Add Student</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="loggedin">Complaints</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                  </div>
+              </li>
+          </ul>
+      </div>
+  </div>
 </nav>
 <div class="container">
-  <h2 style="color: red"><u>Outpass Requests</u></h2>         
+  <h2 style="color: red"><u>Complaints</u></h2>         
   <table class="table table-hover">
     <thead>
-      {% if values1 %}
       <tr>
-        <th style="color: brown">Outpass Id</th>
+        <th style="color: brown">Complaint Id</th>
         <th style="color: brown">Roll Number</th>
-        <th style="color: brown">Name</th>
-        <th style="color: brown">Year</th>
+        <th style="color: brown">Level of Threat</th>
       </tr>
     </thead>
     <tbody>
-      {% for i in values1 %}
+      {% for i in val%}
       <tr>
-        <td><a href="outpasses" id="number" name="number">{{i.oid}}</a></td>
-        <td name="rollnumber123" id="rollnumber"><a href="outpasses?rollnumber={{i.srollno}}&oid={{i.oid}}">{{i.srollno}}</a></td>
-        <td><a href="outpasses" id="name" name="name">{{i.sname}}</a></td>
-        <td><a href="outpasses" id="year" name="year">{{i.syear}}</a></td>
+        <td><a href="complaintdetails?roll={{i.roll}}&aid={{i.Aid}}&cid={{i.cid}}">{{i.cid}}</a></td>
+        <td name="rollnumber123" id="rollnumber"><a href="complaintdetails?roll={{i.roll}}&aid={{i.Aid}}&cid={{i.cid}}">{{i.roll}}</a></td>
+        <td><a href="complaintdetails?roll={{i.roll}}&aid={{i.Aid}}&cid={{i.cid}}" id="year" name="year">{{i.level_of_threat}}</a></td>
       </tr>
       {% endfor %}
-      {% else %}
-      <h3 style="color: blue">No Pending Outpass Requests</h3>
-      {% endif %}
+
+  
+
     </tbody>
   </table>
 </div>

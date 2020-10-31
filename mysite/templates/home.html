@@ -1,72 +1,66 @@
   {% extends 'base.html' %}
-
+  {% load static %}
 {% block content %}
+<style>
+  .mySlides {display:none;}
+  .column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 70%;
+}
+
+.right {
+  width: 30%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  </style>
+  <body>
+  
   <h2>Homepage</h2>
-  <p>Welcome to the GPMS, {% if user.is_authenticated %}{{ user.username }}{% else %}<b>HOD</b>{% endif %}!</p>
-<div class="carde">
-  <a href="https://www.google.com/search?rlz=1C1OKWM_enIN881IN881&tbm=nws&ei=AsPsXpmjPK3gz7sPgpWIoA8&q=Security&oq=Security&gs_l=psy-ab.3..0l10.1438.5062.0.5393.19.12.0.1.1.0.171.948.5j4.9.0....0...1c.1.64.psy-ab..10.9.858....0.Pxiba7RKxJA">
-    <div class="cardheader iconcolor1">
-      <img src="http://www.pngmart.com/files/6/Security-Camera-PNG-Background-Image.png" alt="Security">
+  <p>Welcome to the Anti Ragging Site!</p>
+  <div class="row">
+    <div class="column left">
+      <div class="w3-content w3-section" style="max-width:500px;padding-left: 50px;">
+        <img class="mySlides w3-animate-top" src="{%static 'ar1.jpg'%}" style="width:100%">
+        <img class="mySlides w3-animate-bottom" src="{%static 'ar2.jpg'%}" style="width:100%">
+        <img class="mySlides w3-animate-top" src="{%static 'ar3.jpg'%}" style="width:100%">
+        <img class="mySlides w3-animate-bottom" src="{%static 'ar4.jpg'%}" style="width:100%">
+      </div>
     </div>
-    <div class="cardlinks">
-      <h1>Security</h1>
-      <ul class="cardlist">
-        <li></li>
-        <li>CCTV/IP Cameras</li>
-        <li>Intrusion Alarms</li>
-        <li>Time Synchronization</li>
-      </ul>
+    <div class="column right"">
+      <h2>Anti Ragging Help Line:</h2>
+       <h2 style="color: red;"> 1800 180 5522</h2>
     </div>
-  </a>
-</div>
+  </div>
 
-<div class="carde">
- <a href="https://www.google.com/search?q=Unauthorised&rlz=1C1OKWM_enIN881IN881&source=lnms&tbm=nws&sa=X&ved=2ahUKEwiShonsgY7qAhXn7XMBHa7vD9gQ_AUoAXoECA4QAw">
-    <div class="cardheader iconcolor2">
-       <img src="https://png2.cleanpng.com/sh/6c7a3560e668a61958b9f44608af6b09/L0KzQYm3U8A6N5prfZH0aYP2gLBuTgNma6Z3geZELXjkc7zskr1paZRwjNtBaYPwPb38jQp0bZQyhNHwbz3kfrF1mf1wfaQyjORqboPzccPsjwQueJ9sRadqYUK1Q4a8hcE0a2E2Rqc7N0S7RIq4UcUzOGY8TaU6N0m1Qoe1kP5o/kisspng-security-hacker-hacktivism-lulzsec-logo-anonymous-transparent-png-5aa22355e13c01.5274849115205753179226.png" alt="Unauthorised" >
-    </div>
-    <div class="cardlinks">
-      <h1>Unauthorised</h1>
-      <ul class="cardlist">
-        <li>Proactivity</li>
-        <li>Integration</li>
-        <li>Access Controls</li>
-      </ul>
-    </div>
-  </a>
-</div>
 
-<div class="carde">
-  <a href="https://www.google.com/search?rlz=1C1OKWM_enIN881IN881&tbm=nws&ei=48HsXrXBBbL7z7sPso6O4AU&q=Gate+pass&oq=Gate+pass&gs_l=psy-ab.3..0l3.35373.38875.0.38990.16.14.0.0.0.0.264.1204.0j5j2.7.0....0...1c.1.64.psy-ab..9.7.1204....0._MmokeVRiJA">
-    <div class="cardheader iconcolor1">
-      <img src= "http://www.pngmart.com/files/6/Guard-PNG-Picture.png" alt="Guard">
-    </div>
-    <div class="cardlinks">
-      <h1>Gate Pass</h1>
-      <ul class="cardlist">
-        <li>Risk Management</li>
-        <li>Access Controls</li>
-        <li>Incident Management</li>
-      </ul>
-    </div>
-  </a>
-</div>
-
-<div class="carde">
-  <a href="https://www.google.com/search?hl=en&tbm=nws&ei=qcLsXs-MCZrdz7sPod-M0AM&q=Agreement&oq=Agreement&gs_l=psy-ab.3..0l3.7458.15663.0.16165.7.6.0.1.1.0.159.797.1j5.6.0....0...1c.1.64.psy-ab..0.7.803...0i13k1.0.Fm_HDtWgyPo">
-    <div class="cardheader iconcolor2">
-      <img src="http://www.pngmart.com/files/3/Business-People-PNG-Clipart.png" alt="People">
-    </div>
-    <div class="cardlinks">
-      <h1>Agreement</h1>
-      <ul class="cardlist">
-        <li>Trust</li>
-        <li>Safety</li>
-        <li>Communication</li>
-      </ul>
-    </div>
-  </a>
-</div>
+  <script>
+  var myIndex = 0;
+  carousel();
+  
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2500);    
+  }
+  </script>
+  
 
 {% endblock %}
 
