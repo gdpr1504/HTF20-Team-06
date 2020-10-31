@@ -1,0 +1,30 @@
+{% extends 'addstudent.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <h3 style="color: red">
+          <h2>ADD STUDENT</h2>
+          <form method="post" id="myForm">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-outline-info" href="home2">ADD</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+ <!-- <script>
+     const myForm=document.getElementById('myForm');
+     myForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      const formData= new FormData(this):
+      fetch("https://outpassapp.herokuapp.com/adminregister", {method:'POST',headers:{'Content-Type':'application/json'},body:{"ausername":myForm.username,"apassword":myForm.password1,"aname":first_name}})
+     })
+  </script>

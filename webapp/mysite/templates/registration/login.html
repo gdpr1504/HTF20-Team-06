@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+            <div class="container">
+             <form method="POST" action="{%url 'home1'%}">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Log In</legend>
+                          <div class="form-group">
+                            <label for="Username">Username:</label>
+                            <input type="text" class="form-control" id="Username" placeholder="Enter Username" name="Username">
+                          </div>
+                          <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                          </div>
+                </fieldset>
+            
+                <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Login</button>
+                          <a href="{% url 'password_reset' %}" class="btn btn-link">Forgot your password?</a>
+                </div>
+        </form>
+    </div>
+       </div>
+      </div>
+    </div>
+  </div>
+  {% if data %}
+  {{data.message}}
+  {% endif %}
+
+{% endblock %}

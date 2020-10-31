@@ -1,0 +1,98 @@
+  {% extends 'base.html' %}
+  {% load static %}
+{% block content %}
+<style>
+  .mySlides {display:none;}
+  .column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 70%;
+}
+
+.right {
+  width: 30%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  </style>
+  <body>
+  
+  <h2>Homepage</h2>
+  <p>Welcome to the Anti Ragging Site!</p>
+  <div class="row">
+    <div class="column left">
+      <div class="w3-content w3-section" style="max-width:500px;padding-left: 50px;">
+        <img class="mySlides w3-animate-top" src="{%static 'ar1.jpg'%}" style="width:100%">
+        <img class="mySlides w3-animate-bottom" src="{%static 'ar2.jpg'%}" style="width:100%">
+        <img class="mySlides w3-animate-top" src="{%static 'ar3.jpg'%}" style="width:100%">
+        <img class="mySlides w3-animate-bottom" src="{%static 'ar4.jpg'%}" style="width:100%">
+      </div>
+    </div>
+    <div class="column right"">
+      <h2>Anti Ragging Help Line:</h2>
+       <h2 style="color: red;"> 1800 180 5522</h2>
+    </div>
+  </div>
+
+
+  <script>
+  var myIndex = 0;
+  carousel();
+  
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2500);    
+  }
+  </script>
+  
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<p>
+    <strong>Total users registered: </strong> {{ count }}
+</p>
+--> 
